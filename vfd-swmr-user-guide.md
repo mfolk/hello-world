@@ -1,3 +1,28 @@
+- [Welcome to VFD SWMR](#welcome-to-vfd-swmr)
+- [Quick start](#quick-start)
+  * [Download](#download)
+  * [Build](#build)
+  * [Test](#test)
+- [Sample programs](#sample-programs)
+  * [Extensible datasets](#extensible-datasets)
+  * [The VFD SWMR demos](#the-vfd-swmr-demos)
+- [Developer tips](#developer-tips)
+  * [Configuring VFD SWMR](#configuring-vfd-swmr)
+    + [File-creation properties](#file-creation-properties)
+    + [File-access properties](#file-access-properties)
+  * [Using virtual datasets (VDS)](#using-virtual-datasets--vds-)
+  * [Pushing HDF5 content to reader visibility](#pushing-hdf5-content-to-reader-visibility)
+  * [Reading up-to-date content](#reading-up-to-date-content)
+- [Known issues](#known-issues)
+  * [Variable-length data](#variable-length-data)
+  * [Microsoft Windows](#microsoft-windows)
+  * [Supported filesystems](#supported-filesystems)
+  * [File-opening order](#file-opening-order)
+- [Reporting bugs](#reporting-bugs)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
 # Welcome to VFD SWMR  
 
 Thank you for volunteering to test VFD SWMR.  VFD SMWR is a new feature
