@@ -1,10 +1,14 @@
 # Welcome to VFD SWMR  
 
-Thank you for volunteering to test VFD SWMR.  VFD SMWR is a new feature
+Thank you for volunteering to test VFD SWMR.  
+
+SWMR, which stands for Single Writer/Multiple Reader, is a feature
 of the HDF5 library that lets a process write data to an HDF5 file while
 one or more processes read the file.  Use cases range from monitoring
 data collection and/or steering experiments in progress to financial
 applications.
+
+![alt text](SWMRdataflow.png "Single Writer/Multiple Readers")
 
 VFD SWMR is designed to be a more flexible, more modular,
 better-performing replacement for the existing SWMR feature.  VFD
