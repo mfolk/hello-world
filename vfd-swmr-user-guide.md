@@ -1,33 +1,20 @@
-- [Welcome to VFD SWMR](#welcome-to-vfd-swmr)
-- [Quick start](#quick-start)
-  * [Download](#download)
-  * [Build](#build)
-  * [Test](#test)
-- [Sample programs](#sample-programs)
-  * [Extensible datasets](#extensible-datasets)
-  * [The VFD SWMR demos](#the-vfd-swmr-demos)
-- [Developer tips](#developer-tips)
-  * [Configuring VFD SWMR](#configuring-vfd-swmr)
-    + [File-creation properties](#file-creation-properties)
-    + [File-access properties](#file-access-properties)
-  * [Using virtual datasets (VDS)](#using-virtual-datasets--vds-)
-  * [Pushing HDF5 content to reader visibility](#pushing-hdf5-content-to-reader-visibility)
-  * [Reading up-to-date content](#reading-up-to-date-content)
-- [Known issues](#known-issues)
-  * [Variable-length data](#variable-length-data)
-  * [Microsoft Windows](#microsoft-windows)
-  * [Supported filesystems](#supported-filesystems)
-  * [File-opening order](#file-opening-order)
-- [Reporting bugs](#reporting-bugs)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
-
 # Welcome to VFD SWMR  
 
 Thank you for volunteering to test VFD SWMR.  VFD SMWR is a new feature
-of the HDF5 library that lets a data-generating application write data
-to an HDF5 file while one or more consumer applications read the file.
+of the HDF5 library that lets a process write data to an HDF5 file while
+one or more processes read the file.  Use cases range from monitoring
+data collection and/or steering experiments in progress to financial
+applications.
+
+VFD SWMR is designed to be a more flexible, more modular,
+better-performing replacement for the existing SWMR feature.  VFD
+SWMR allows HDF5 objects (groups, datasets, attributes) to be
+created and destroyed in the course of a reader-writer session.  It
+compartmentalizes much of the SWMR functionality in a virtual-file
+driver (VFD), thus easing The HDF Group's software-maintenance burden.
+And it makes guarantees for the maximum time from write to availability
+of data for read, provided that the reading and writing systems and
+their interconnections can keep up with the data flow.
 
 # Quick start
 
@@ -281,8 +268,14 @@ vfd_swmr_create_fapl(bool writer, bool only_meta_pages, bool use_vfd_swmr)
  ** share.  The `md_file_path` parameter tells where to put the shadow
  ** file.
  **
- ** The `md_pages_reserved` parameter tells the starting size of the
- ** shadow file, in pages.  The shadow file is allowed to grow larger.
+ ** The `md_pages_reserved` parameter tells how many pages to reserve
+ ** at the beginning of the shadow file for the shadow-file header
+ ** and the shadow index.  The header has an entire page to itself.
+ ** The remaining `md_pages_reserved - 1` pages are reserved for the
+ ** shadow index.  If the index grows larger than its initial
+ ** allocation, then it will move to a new location in the shadow file,
+ ** and the initial allocation will be reclaimed.  `md_pages_reserved`
+ ** must be at least 2.
  **
  ** The `version` parameter tells what version of VFD SWMR configuration
  ** the parameter struct `config` contains.  For now, it should be
