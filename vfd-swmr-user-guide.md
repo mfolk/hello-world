@@ -8,15 +8,19 @@ one or more processes read the file.  Use cases range from monitoring
 data collection and/or steering experiments in progress to financial
 applications.
 
+<img src = SWMRdataflow.png width=400 />
 
 
 VFD SWMR is designed to be a more flexible, more modular,
-better-performing replacement for the existing SWMR feature.  VFD
+better-performing replacement for the existing SWMR feature.  
+
+* VFD
 SWMR allows HDF5 objects (groups, datasets, attributes) to be
-created and destroyed in the course of a reader-writer session.  It
+created and destroyed in the course of a reader-writer session.  
+* It
 compartmentalizes much of the SWMR functionality in a virtual-file
 driver (VFD), thus easing The HDF Group's software-maintenance burden.
-And it makes guarantees for the maximum time from write to availability
+* And it makes guarantees for the maximum time from write to availability
 of data for read, provided that the reading and writing systems and
 their interconnections can keep up with the data flow.
 
