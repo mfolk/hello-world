@@ -8,6 +8,8 @@ one or more processes read the file.  Use cases range from monitoring
 data collection and/or steering experiments in progress to financial
 applications.
 
+The following diagram illustrates how SWMR works.
+
 <img src = SWMRdataflow.png width=400 />
 
 
@@ -23,6 +25,8 @@ driver (VFD), thus easing The HDF Group's software-maintenance burden.
 * And it makes guarantees for the maximum time from write to availability
 of data for read, provided that the reading and writing systems and
 their interconnections can keep up with the data flow.
+
+For details on how VFD SWMR is implemented, see [LINK to RFC].
 
 # Quick start
 
