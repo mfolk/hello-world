@@ -8,7 +8,7 @@ one or more processes read the file.  Use cases range from monitoring
 data collection and/or steering experiments in progress to financial
 applications.
 
-![alt text](SWMRdataflow.png "Single Writer/Multiple Readers")
+
 
 VFD SWMR is designed to be a more flexible, more modular,
 better-performing replacement for the existing SWMR feature.  VFD
